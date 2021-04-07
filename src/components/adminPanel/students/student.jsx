@@ -1,12 +1,13 @@
 import React from "react"
 import { Table } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import classes from "./teachers.module.css"
+import classes from "./students.module.css"
+import SelectCustom from "../select/select";
 
-
-const Teachers = () => {
+const Students = () => {
     return (
         <div className={classes.wrapper}>
+            <SelectCustom/>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
@@ -14,7 +15,7 @@ const Teachers = () => {
                         <th>Имя</th>
                         <th>Фамилия</th>
                         <th>Отчество</th>
-                        <th>Статус</th>
+                        <th>Группа</th>
                         <th>Действие</th>
                     </tr>
                 </thead>
@@ -25,7 +26,7 @@ const Teachers = () => {
                         <td>Otto</td>
                         <td>Jjbj</td>
                         <td>Ожидание</td>
-                        <td><button className={classes.confirm}>Подтвердить</button></td>
+                        <td><button className={classes.btnBlock}>Заблокировать</button></td>
                     </tr>
                     <tr>
                         <td>1</td>
@@ -33,15 +34,7 @@ const Teachers = () => {
                         <td>Otto</td>
                         <td>Jjbj</td>
                         <td>Ожидание</td>
-                        <td><button className={classes.confirm}>Подтвердить</button></td>
-                    </tr>
-                    <tr>
-                        <td>14654654765765</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>Jjbj</td>
-                        <td>Ожидание</td>
-                        <td><button className={classes.confirm}>Подтвердить</button></td>
+                        <td><button className={classes.unBlock}>Разблокировать</button></td>
                     </tr>
                 </tbody>
             </Table>
@@ -49,4 +42,4 @@ const Teachers = () => {
 
     )
 }
-export default Teachers;
+export default Students;
