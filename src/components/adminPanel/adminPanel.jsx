@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import logo from "./img/logo.png"
 import Content from './content/content';
+import logout from "./img/log-out.png"
+import {Link} from "react-router-dom"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -45,12 +47,12 @@ function a11yProps(index) {
 }
 
 const useStyles = makeStyles((theme) => ({
-    
+
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     display: 'flex',
-    height:"100%",
+    height: "100%",
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -65,9 +67,12 @@ export default function AdminPanel() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const logoutAdmin =()=>{
+    localStorage.clear()
+  }
 
   return (
-    <div style={{height: "100%", width: "100%",position:"fixed"}}className={classes.root}>
+    <div style={{ height: "100%", width: "100%", position: "fixed" }} className={classes.root}>
       <Tabs
         orientation="vertical"
         value={value}
@@ -75,15 +80,20 @@ export default function AdminPanel() {
         aria-label="Vertical tabs example"
         className={classes.tabs}
       >
-        <div className={customClasses.blockLogo}><img alt="logo" src={logo}/></div>
+        <div className={customClasses.blockLogo}><img alt="logo" src={logo} /></div>
         <Tab label="Преподаватели" {...a11yProps(0)} />
         <Tab label="Студенты" {...a11yProps(1)} />
         <Tab label="Группы" {...a11yProps(2)} />
+        <Link to="/">
+        <img alt="logout" onClick={()=>logoutAdmin()} className={customClasses.logout} src={logout} />
+        </Link>
+        
       </Tabs>
-      <TabPanel style={{width:"90%"}} value={value} index={value}>
-        <Content index={value}/>
+      <TabPanel style={{ width: "90%" }} value={value} index={value}>
+        <Content index={value} />
       </TabPanel>
-      
+
+
     </div>
   );
 }

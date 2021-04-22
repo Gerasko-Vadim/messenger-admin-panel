@@ -1,10 +1,17 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Table } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import classes from "./teachers.module.css"
+import { useDispatch, useSelector } from "react-redux";
+import { allteachers } from "../../../redux/actions/actions";
 
 
 const Teachers = () => {
+    const dispatch = useDispatch();
+    const data = useSelector((state) => state.Teachers.arrayTeachers)
+    useEffect(() => {
+        dispatch(allteachers())
+    }, [])
     return (
         <div className={classes.wrapper}>
             <Table striped bordered hover size="sm">
@@ -19,30 +26,20 @@ const Teachers = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>Jjbj</td>
-                        <td>Ожидание</td>
-                        <td><button className={classes.confirm}>Подтвердить</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>Jjbj</td>
-                        <td>Ожидание</td>
-                        <td><button className={classes.confirm}>Подтвердить</button></td>
-                    </tr>
-                    <tr>
-                        <td>14654654765765</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>Jjbj</td>
-                        <td>Ожидание</td>
-                        <td><button className={classes.confirm}>Подтвердить</button></td>
-                    </tr>
+                    {
+                        data && data.map((item) => {
+                            return (
+                                <tr key={item.id}>
+                                    <td>{item.id}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.surname}</td>
+                                    <td>{item.patronymic}</td>
+                                    <td>{item.isActive}</td>
+                                    <td><button className={classes.confirm}>Подтвердить</button></td>
+                                </tr>
+                            )
+                        })
+                    }
                 </tbody>
             </Table>
         </div>
