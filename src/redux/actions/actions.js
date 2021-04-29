@@ -48,3 +48,40 @@ export function Groups() {
             });
     }
 }
+
+export function FilterByGroup(group) {
+    return async (dispatch) => {
+        await API.filterByGroup(group)
+            .then(res => {
+                dispatch(seccessAllStudents(res.data))
+            });
+    }
+}
+
+export function UpdateGroup(data) {
+    return async (dispatch) => {
+        await API.updateGroup(data)
+            .then(res => {
+                dispatch(Groups())
+            });
+    }
+}
+
+export function ChangeUsers(data) {
+    return async (dispatch) => {
+        await API.changeUsers(data)
+            .then(res => {
+                dispatch(allStudents())
+            });
+    }
+}
+
+
+export function addGroup(group) {
+    return async (dispatch) => {
+        await API.addGroup(group)
+            .then(res => {
+                dispatch(Groups())
+            });
+    }
+}

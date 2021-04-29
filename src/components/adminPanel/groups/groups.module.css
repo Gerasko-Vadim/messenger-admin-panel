@@ -10,6 +10,12 @@
     color: white;
     
 }
+.btnGreen{
+    border-radius: 4px;
+    border: 1px solid rgb(6, 192, 31);
+    background:rgb(6, 192, 31);
+    color: white;
+}
 .add{
     position: absolute;
     bottom: -70px;

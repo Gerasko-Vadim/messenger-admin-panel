@@ -17,7 +17,6 @@ const Teachers = () => {
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
-                        <th>id</th>
                         <th>Имя</th>
                         <th>Фамилия</th>
                         <th>Отчество</th>
@@ -30,7 +29,6 @@ const Teachers = () => {
                         data && data.map((item) => {
                             return (
                                 <tr key={item.id}>
-                                    <td>{item.id}</td>
                                     <td>{item.name}</td>
                                     <td>{item.surname}</td>
                                     <td>{item.patronymic}</td>

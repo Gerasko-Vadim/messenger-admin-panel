@@ -12,6 +12,7 @@ import logo from "./img/logo.png"
 import Content from './content/content';
 import logout from "./img/log-out.png"
 import {Link} from "react-router-dom"
+import ModalAddGroup from "./modal/modal"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -92,8 +93,7 @@ export default function AdminPanel() {
       <TabPanel style={{ width: "90%" }} value={value} index={value}>
         <Content index={value} />
       </TabPanel>
-
-
+    
     </div>
   );
 }

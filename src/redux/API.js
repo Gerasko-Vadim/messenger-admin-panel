@@ -12,10 +12,12 @@ const http = Axios.create({
 
 
 export default {
-    signIn: (data) => http.post(`/admin/signIn`, {
-        ...data
-    }),
+    signIn: (data) => http.post(`/admin/signIn`, data),
     allTeachers: () => http.get(`/admin/teachers`),
     allStudents: () => http.get(`/admin/students`),
-    allGroups: ()=>http.get("admin/groups")
+    allGroups: ()=>http.get("admin/groups"),
+    filterByGroup:(group)=>http.get(`admin/students/${group}`),
+    updateGroup:(data)=>http.patch(`admin/groups`,data),
+    changeUsers:(data)=>http.post(`admin/change-users`,data),
+    addGroup:(group)=>http.post(`admin/groups`,group)
 }
